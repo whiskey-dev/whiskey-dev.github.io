@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blocks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="lands.css">
+</head>
+<body>
+    <nav class="nav abs_left">
+        <ul>
+            <h2>Items</h2>
+            <li class="action" data-action="none">Null</li>
+            <li class="action" data-action="grass">Grass</li>
+            <li class="action" data-action="dirt">Dirt</li>
+            <li class="action" data-action="stone">Stone</li>
+            <li class="action" data-action="stonepath">Stone path</li>
+            <li class="action" data-action="cleanstone">Cleanstone</li>
+            <li class="action" data-action="brick">Brick</li>
+            <li class="action" data-action="water">Water</li>
+            <li class="action" data-action="tree">Tree</li>
+            <h2>Share</h2>
+            <li class="options" data-for="save">
+                Save
+            </li>
+            <li id="save" class="hidden">
+                    <textarea id="savetextarea" cols="30" rows="10" placeholder="There should be exported project in JSON"></textarea>
+            </li>
+
+            <li class="options" data-for="load">
+                Load
+            </li>
+            <li id="load" class="hidden">
+                    <form>
+                        <button class="loadbutton" type="button" id="loadfields">Load &rarr;</button>
+                    </form>
+                    <textarea id="loadtextarea" cols="30" rows="10" placeholder="Paste JSON here to load your lands"></textarea>
+            </li>
+        </ul>
+    </nav>
+    <nav class="nav abs_right">
+    </nav>
+    <header class="header">
+        <h1>Blocks</h1>
+    </header>
+    <main id="gamewrapper">
+
+    </main>
+</body>
+<script src="core.js"></script>
+<script>
+    var field = new Field("action", "gamewrapper", "game__land", "tree", "game");
+    field.generate("classic", 32, 18);
+    field.render("all");
+    field.listen("options");
+    field.listen("landsclick");
+    field.listen("actionclick");
+    field.listen("loadbutton", "loadbutton");
+</script>
+</html>
